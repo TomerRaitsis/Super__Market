@@ -11,7 +11,7 @@ int countlines();
 const char* returnword(char* line, int n);
 int editproduct(char* product);
 
-char** printcategory()// הדפסת כללית
+char** printcategory()// .הדפסת כללית
 {
 	int i = 0,j=1,count,tablecounter=0;
 	char categorylist[100][20];

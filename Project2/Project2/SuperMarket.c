@@ -874,6 +874,7 @@ void Shopping_Cart(char** List, int* Number_Of_Products, int* Number_Of_Total_Ca
 					{
 						Serial[k] = List[i][j];
 						j++;
+						k++;
 					}
 					if (strcmp(Serial, SerialChoice) != 0)
 						strcpy(ProductDetails, " ");
@@ -1028,7 +1029,7 @@ void addProduct(char* category)//הוספת מוצר לסוף
 		gets(temp);
 	}
 	strcat(newproduct, temp);
-	strcat(newproduct, "\n");
+	//strcat(newproduct, "\n");
 	productlist = fopen("categories.txt", "a");
 	fprintf(productlist, "%s", newproduct);
 	fclose(productlist);
@@ -1203,8 +1204,11 @@ int editproduct(char* product)//עריכת מוצר
 		}
 		char line[150], templine[150], temp5[20], line2[150];
 		int i = 0;
+		int ch = 0;
+		int ch1 = 0;
 		while (!feof(pl))
 		{
+			ch1++;
 			fgets(line, 150, pl);
 			if (strcmp(product, returnword(line, 2)) != 0)
 			{
@@ -1214,6 +1218,7 @@ int editproduct(char* product)//עריכת מוצר
 			if (strcmp(product, returnword(line, 2)) == 0)
 			{
 				strcpy(templine, line);
+				ch = ch1;
 			}
 		}
 		fclose(pl);
@@ -1221,7 +1226,8 @@ int editproduct(char* product)//עריכת מוצר
 		pl = fopen("categories.txt", "w");
 		for (int i = 0; i < lines; i++)
 		{
-			fprintf(pl, newpro[i]);
+			if(i+1 != ch)
+				fprintf(pl, newpro[i]);
 		}
 		fclose(pl);
 		for (int i = 0; i < lines; i++)
@@ -1245,7 +1251,7 @@ int editproduct(char* product)//עריכת מוצר
 			strcat(line2, returnword(templine, 3));
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 4));
-			strcat(line2, "\0");
+			//strcat(line2, "\0");
 			pl = fopen("categories.txt", "a");
 			fprintf(pl, "\n%s", line2);
 			fclose(pl);
@@ -1264,7 +1270,7 @@ int editproduct(char* product)//עריכת מוצר
 			strcat(line2, temp5);
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 4));
-			strcat(line2, "\0");
+			//strcat(line2, "\0");
 			pl = fopen("categories.txt", "a");
 			fprintf(pl, "\n%s", line2);
 			fclose(pl);
@@ -1283,7 +1289,7 @@ int editproduct(char* product)//עריכת מוצר
 			strcat(line2, returnword(templine, 3));
 			strcat(line2, " ");
 			strcat(line2, temp5);
-			strcat(line2, "\0");
+			//strcat(line2, "\0");
 			pl = fopen("categories.txt", "a");
 			fprintf(pl, "\n%s", line2);
 			fclose(pl);
@@ -1494,10 +1500,14 @@ void printShoppingMenu(void)
 }
 void printAllProduct(void) {
 	FILE* read = fopen("categories.txt", "r");
-	char singleline[150];
-	while (!feof(read)) {
-		fgets(singleline, 150, read);
-		puts(singleline);
+	char singleline[MAXSTRING];
+	char Check[MAXSTRING] = " ";
+	while (!feof(read)) 
+	{
+		fgets(singleline, MAXSTRING, read);
+		if (strcmp(Check, singleline) != 0)
+			puts(singleline);
+		strcpy(Check, singleline);
 	}
 	fclose(read);
 }

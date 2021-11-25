@@ -1,0 +1,51 @@
+﻿  SuperMarket.c
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(134,21): warning C4013: 'checkUserExist' undefined; assuming extern returning int
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(134,48): warning C4013: 'CheckUserName' undefined; assuming extern returning int
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(134,75): warning C4013: 'CheckPassword' undefined; assuming extern returning int
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(141,21): warning C4013: 'SendUserAndPass' undefined; assuming extern returning int
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(187,34): warning C4477: 'fprintf' : format string '%c' requires an argument of type 'int', but variadic argument 3 has type 'char *'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(194,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(208,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(311,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(307,1): warning C4133: 'initializing': incompatible types - from 'int **' to 'char **'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(322,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(345,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(340,6): warning C4101: 'check': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(381,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(402,18): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(560,26): warning C4133: 'return': incompatible types - from 'tm *' to 'char *'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(600,8): warning C4013: 'gets' undefined; assuming extern returning int
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(608,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(635,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(657,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(676,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(695,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(721,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(759,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(769,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(797,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(837,93): warning C4133: 'function': incompatible types - from 'char *' to 'int *'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(836,1): warning C4133: 'initializing': incompatible types - from 'char *' to 'tm *'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(908,69): warning C4133: 'function': incompatible types - from 'int *' to 'char *'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1042,18): warning C4101: 'product2': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1087,11): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1082,24): warning C4101: 'product2': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1129,24): warning C4101: 'product2': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1197,25): warning C4013: 'countlines' undefined; assuming extern returning int
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1352,6): warning C4101: 'num1': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1363,34): warning C4101: 'temp5': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1363,45): warning C4101: 'line2': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1402,18): warning C4101: 'categoi': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1747,35): warning C4101: 'temp5': unreferenced local variable
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1808,12): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1812,12): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1830,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(71): warning C4172: returning address of local variable or temporary: password
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(247): warning C4716: 'PrintMainMenu': must return a value
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(569): warning C4715: 'Choosing_Date_For_Delivery': not all control paths return a value
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1329): warning C4172: returning address of local variable or temporary: temp
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1303): warning C4715: 'editproduct': not all control paths return a value
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1185): warning C4172: returning address of local variable or temporary: temp
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1482): warning C4172: returning address of local variable or temporary: choose
+C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Project2\SuperMarket.c(1837): warning C4172: returning address of local variable or temporary: username
+  Project2.vcxproj -> C:\Users\tomer\OneDrive\שולחן העבודה\Project2\Debug\Project2.exe

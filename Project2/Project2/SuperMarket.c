@@ -1978,7 +1978,7 @@ void main()
 			}
 		}
 
-		// Client Menu
+		// Client Menu 
 		if (MorC == 'C')
 		{
 			while (run2)

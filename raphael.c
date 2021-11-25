@@ -199,8 +199,7 @@ void filterItemsByPrices(void)
     free(arrPrice);
     fclose(read);
 }
-
-int main()
+void menuShopClient(void)
 {
     int run=1, option=0;
     char categories[20];
@@ -230,8 +229,9 @@ int main()
                break;
        }
    }
-   
+}
+int main()
+{
+    menuShopClient();
     return 0;
 }
-
-

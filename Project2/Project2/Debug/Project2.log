@@ -1,54 +1,52 @@
 ﻿  SuperMarket.c
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(134,24): warning C4013: 'checkUserNotExist' undefined; assuming extern returning int
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(134,51): warning C4013: 'CheckUserName' undefined; assuming extern returning int
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(134,78): warning C4013: 'CheckPassword' undefined; assuming extern returning int
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(141,21): warning C4013: 'SendUserAndPass' undefined; assuming extern returning int
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(187,34): warning C4477: 'fprintf' : format string '%c' requires an argument of type 'int', but variadic argument 3 has type 'char *'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(194,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(208,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(310,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(306,1): warning C4133: 'initializing': incompatible types - from 'int **' to 'char **'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(321,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(344,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(339,6): warning C4101: 'check': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(380,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(401,18): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(559,26): warning C4133: 'return': incompatible types - from 'tm *' to 'char *'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(599,8): warning C4013: 'gets' undefined; assuming extern returning int
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(607,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(634,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(656,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(675,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(694,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(720,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(758,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(768,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(796,22): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(836,93): warning C4133: 'function': incompatible types - from 'char *' to 'int *'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(835,1): warning C4133: 'initializing': incompatible types - from 'char *' to 'tm *'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(908,69): warning C4133: 'function': incompatible types - from 'int *' to 'char *'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(989,7): warning C4101: 'product': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1044,18): warning C4101: 'product2': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1089,11): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1084,24): warning C4101: 'product2': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1131,24): warning C4101: 'product2': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1199,25): warning C4013: 'countlines' undefined; assuming extern returning int
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1360,6): warning C4101: 'num1': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1371,34): warning C4101: 'temp5': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1371,45): warning C4101: 'line2': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1410,18): warning C4101: 'categoi': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1708,35): warning C4101: 'temp5': unreferenced local variable
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1769,12): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1773,12): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1791,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1895,16): warning C4133: 'function': incompatible types - from 'FILE *' to 'const char *'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1899,16): warning C4133: 'function': incompatible types - from 'FILE *' to 'const char *'
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(71): warning C4172: returning address of local variable or temporary: password
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(568): warning C4715: 'Choosing_Date_For_Delivery': not all control paths return a value
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1187): warning C4172: returning address of local variable or temporary: temp
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1337): warning C4172: returning address of local variable or temporary: temp
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1311): warning C4715: 'editproduct': not all control paths return a value
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1490): warning C4172: returning address of local variable or temporary: choose
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1798): warning C4172: returning address of local variable or temporary: username
-C:\Users\Yosi\Desktop\Clone\Project2\Project2\SuperMarket.c(1906): warning C4716: 'menu': must return a value
-  Project2.vcxproj -> C:\Users\Yosi\Desktop\Clone\Project2\Debug\Project2.exe
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(134,24): warning C4013: 'checkUserNotExist' undefined; assuming extern returning int
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(134,51): warning C4013: 'CheckUserName' undefined; assuming extern returning int
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(134,78): warning C4013: 'CheckPassword' undefined; assuming extern returning int
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(141,21): warning C4013: 'SendUserAndPass' undefined; assuming extern returning int
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(187,34): warning C4477: 'fprintf' : format string '%c' requires an argument of type 'int', but variadic argument 3 has type 'char *'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(194,20): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(208,20): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(310,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(306,1): warning C4133: 'initializing': incompatible types - from 'int **' to 'char **'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(321,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(344,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(339,6): warning C4101: 'check': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(380,11): warning C4047: 'return': 'char **' differs in levels of indirection from 'int'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(401,18): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(559,26): warning C4133: 'return': incompatible types - from 'tm *' to 'char *'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(599,8): warning C4013: 'gets' undefined; assuming extern returning int
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(607,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(634,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(656,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(675,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(694,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(720,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(758,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(768,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(796,22): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(836,93): warning C4133: 'function': incompatible types - from 'char *' to 'int *'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(835,1): warning C4133: 'initializing': incompatible types - from 'char *' to 'tm *'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(908,69): warning C4133: 'function': incompatible types - from 'int *' to 'char *'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(989,7): warning C4101: 'product': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1044,18): warning C4101: 'product2': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1089,11): warning C4047: 'return': 'char *' differs in levels of indirection from 'int'
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1084,24): warning C4101: 'product2': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1131,24): warning C4101: 'product2': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1199,25): warning C4013: 'countlines' undefined; assuming extern returning int
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1361,6): warning C4101: 'num1': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1372,34): warning C4101: 'temp5': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1372,45): warning C4101: 'line2': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1411,18): warning C4101: 'categoi': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1709,35): warning C4101: 'temp5': unreferenced local variable
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1770,12): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1774,12): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1792,20): warning C4018: '<': signed/unsigned mismatch
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(71): warning C4172: returning address of local variable or temporary: password
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(568): warning C4715: 'Choosing_Date_For_Delivery': not all control paths return a value
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1187): warning C4172: returning address of local variable or temporary: temp
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1338): warning C4172: returning address of local variable or temporary: temp
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1312): warning C4715: 'editproduct': not all control paths return a value
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1491): warning C4172: returning address of local variable or temporary: choose
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1799): warning C4172: returning address of local variable or temporary: username
+D:\Github REPO\Super__Market\Project2\Project2\SuperMarket.c(1924): warning C4716: 'menu': must return a value
+  Project2.vcxproj -> D:\Github REPO\Super__Market\Project2\Debug\Project2.exe

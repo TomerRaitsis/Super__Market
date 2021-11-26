@@ -1891,7 +1891,7 @@ int menu() {
 		open = fopen(a, "r");
 		if (open == NULL)
 		{
-			check = 0;
+			check = 0; 
 			count++;
 		}
 			

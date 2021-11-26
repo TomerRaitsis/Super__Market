@@ -246,9 +246,9 @@ int PrintWelcome()
 int PrintClientMenu(char* username)
 {
 	int choose = 0;
+	printf("Hello %s!\n", username);
 	while (choose != 1 && choose != 2 && choose != 3 && choose != 4)
 	{
-		printf("Hello %s!\n", username);
 		printf("Please choose one of the following:\n");
 		printf("1) Catalog\n");
 		printf("2) Shopping cart\n");
@@ -270,9 +270,9 @@ int PrintClientMenu(char* username)
 int PrintManagerMenu(char* username)
 {
 	int choose = 0;
+	printf("Hello %s!\n", username);
 	while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5)
 	{
-		printf("Hello %s!\n", username);
 		printf("Please choose one of the following:\n");
 		printf("1) Catalog management\n");
 		printf("2) Order management\n");
@@ -1225,10 +1225,10 @@ int editproduct(char* product)//עריכת מוצר
 		fclose(pl);
 		i = 0;
 		pl = fopen("categories.txt", "w");
-		for (int i = 0; i < lines; i++)
+		for (int i = 0; i < lines ; i++)
 		{
 			if (i + 1 != ch)
-				fprintf(pl, newpro[i]);
+				fputs(newpro[i], pl);
 		}
 		fclose(pl);
 		for (int i = 0; i < lines; i++)
@@ -1239,10 +1239,11 @@ int editproduct(char* product)//עריכת מוצר
 		printf("Please select how you want to edit your product \n");
 		printf("1.Name\n2.Price\n3.Quantity\n");
 		scanf("%d", &num1);
+		getchar();
 		if (num1 == 1)
 		{
 			printf("Please enter a name: ");
-			scanf("%s", temp5);
+			gets(temp5);
 			strcpy(line2, returnword(templine, 0));
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 1));
@@ -1252,16 +1253,16 @@ int editproduct(char* product)//עריכת מוצר
 			strcat(line2, returnword(templine, 3));
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 4));
-			//strcat(line2, "\0");
+            strcat(line2, "\0");
 			pl = fopen("categories.txt", "a");
-			fprintf(pl, "\n%s", line2);
+			fputs(line2, pl);
 			fclose(pl);
 			return 0;
 		}
 		if (num1 == 2)
 		{
 			printf("Please enter a price: ");
-			scanf("%s", temp5);
+			gets(temp5);
 			strcpy(line2, returnword(templine, 0));
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 1));
@@ -1271,16 +1272,16 @@ int editproduct(char* product)//עריכת מוצר
 			strcat(line2, temp5);
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 4));
-			//strcat(line2, "\0");
+			strcat(line2, "\0");
 			pl = fopen("categories.txt", "a");
-			fprintf(pl, "\n%s", line2);
+			fputs(line2, pl);
 			fclose(pl);
 			return 0;
 		}
 		if (num1 == 3)
 		{
 			printf("Please enter a quantity: ");
-			scanf("%s", temp5);
+			gets(temp5);
 			strcpy(line2, returnword(templine, 0));
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 1));
@@ -1290,9 +1291,9 @@ int editproduct(char* product)//עריכת מוצר
 			strcat(line2, returnword(templine, 3));
 			strcat(line2, " ");
 			strcat(line2, temp5);
-			//strcat(line2, "\0");
+			strcat(line2, "\0");
 			pl = fopen("categories.txt", "a");
-			fprintf(pl, "\n%s", line2);
+			fputs(line2, pl);
 			fclose(pl);
 			return 0;
 		}
@@ -1743,7 +1744,7 @@ char** ClientShop(char** List, int* Current_Size_list)
 			strcat(line2, NewQuantity);
 			strcat(line2, "\0");
 			pl = fopen("categories.txt", "a");
-			fprintf(pl, "\n%s", line2);
+			fprintf(pl, "%s\n", line2); // \n
 			fclose(pl);
 			break;
 		case 4:

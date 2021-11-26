@@ -131,7 +131,7 @@ char Registration(char* USER)
 		scanf("%s", username);
 		printf("Password: ");
 		scanf("%s", password);
-		x = checkUserExist(username) && CheckUserName(username) && CheckPassword(password);
+		x = checkUserNotExist(username) && CheckUserName(username) && CheckPassword(password);
 		if (!x)
 		{
 			printf("Username is exist or password is incorrect!, Try Again..\nClearing in 3 seconds...");
@@ -168,11 +168,11 @@ int Reg(char choose)
 		scanf("%s", username);
 		printf("Password: ");
 		scanf("%s", password);
-		ok =  checkUserExist(username) && CheckUserName(username) && CheckPassword(password);
+		ok = checkUserNotExist(username) && CheckUserName(username) && CheckPassword(password);
 		if (!ok)
 		{
-			printf("Username is exist or password is incorrect!, Try Again..\nClearing in 3 seconds...");
-			delay(3);
+			printf("Username is exist or password is incorrect!, Try Again..\nClearing in 2 sec...");
+			delay(2);
 		}
 	}
 	ok = SendUserAndPass(username, password, choose);
@@ -238,19 +238,17 @@ int PrintWelcome()
 			delay(3);
 		}
 	}
+	printf("Moving....\n");
+	delay(2);
 	return choose;
 }
 
-int PrintMainMenu()
-{
-
-}
-
-int PrintClientMenu()
+int PrintClientMenu(char* username)
 {
 	int choose = 0;
 	while (choose != 1 && choose != 2 && choose != 3 && choose != 4)
 	{
+		printf("Hello %s!\n", username);
 		printf("Please choose one of the following:\n");
 		printf("1) Catalog\n");
 		printf("2) Shopping cart\n");
@@ -269,11 +267,12 @@ int PrintClientMenu()
 	return choose;
 }
 
-int PrintManagerMenu()
+int PrintManagerMenu(char* username)
 {
 	int choose = 0;
 	while (choose != 1 && choose != 2 && choose != 3 && choose != 4 && choose != 5)
 	{
+		printf("Hello %s!\n", username);
 		printf("Please choose one of the following:\n");
 		printf("1) Catalog management\n");
 		printf("2) Order management\n");
@@ -984,11 +983,12 @@ char** printcategory()
 	return categorylist;
 }
 
-void addProduct(char* category)//הוספת מוצר לסוף 
+void addProduct(char* category, int* serial)//הוספת מוצר לסוף 
 {
 	FILE* productlist;
-	productlist = fopen("categories.txt", "r");
 	char product[MAXSTRING], serialnum[MAXSTRING], newproduct[MAXSTRING], temp[MAXSTRING];
+	/*
+	productlist = fopen("categories.txt", "r");
 	while (!feof(productlist))
 	{
 		fgets(product, 150, productlist);
@@ -996,8 +996,9 @@ void addProduct(char* category)//הוספת מוצר לסוף
 	}
 	fclose(productlist);
 	int serial = atoi(serialnum);
-	serial++;
-	sprintf(serialnum, "%d", serial);
+	*/
+	(*serial)++;
+	sprintf(serialnum, "%d", *serial);
 	strcpy(newproduct, category);
 	strcat(newproduct, " ");
 	strcat(newproduct, serialnum);
@@ -1226,7 +1227,7 @@ int editproduct(char* product)//עריכת מוצר
 		pl = fopen("categories.txt", "w");
 		for (int i = 0; i < lines; i++)
 		{
-			if(i+1 != ch)
+			if (i + 1 != ch)
 				fprintf(pl, newpro[i]);
 		}
 		fclose(pl);
@@ -1416,7 +1417,7 @@ void printspec(char* category1)//הדפסה של המוצרים מאותה קטגוריה
 	fclose(category);
 }
 
-void printinstructions(char* category)//הוראות
+void printinstructions(char* category,int* serial)//הוראות
 {
 	char product[MAXSTRING] = "\0";
 	int choose = 0;
@@ -1437,7 +1438,7 @@ void printinstructions(char* category)//הוראות
 		switch (choose)
 		{
 		case ADD:
-			addProduct(category);
+			addProduct(category,serial);
 			break;
 		case UPDATE:
 			printf("Please choose a product (by it's name): ");
@@ -1502,7 +1503,7 @@ void printAllProduct(void) {
 	FILE* read = fopen("categories.txt", "r");
 	char singleline[MAXSTRING];
 	char Check[MAXSTRING] = " ";
-	while (!feof(read)) 
+	while (!feof(read))
 	{
 		fgets(singleline, MAXSTRING, read);
 		if (strcmp(Check, singleline) != 0)
@@ -1561,57 +1562,6 @@ int checkIfItemIsExist(const char* word)
 	fclose(file);
 	return 0;
 }
-//char* addItemsToShoppingCart(void)
-//{
-//	char line[150], productToAdd[20], templine[150], quantity[4];
-//	char* line1 = malloc(150 * sizeof(char));
-//	printf("Enter the name of product you want to add: ");
-//	scanf("%s", productToAdd);
-//
-//	if (checkIfItemIsExist(productToAdd) == 1)
-//	{
-//		FILE* read = fopen("file.txt", "r");
-//		while (!feof(read))
-//		{
-//			fgets(line, 150, read);
-//			if (strcmp(productToAdd, cuttingWordFromLine(line, 2)) == 0)
-//			{
-//				strcpy(templine, line);
-//				break;
-//			}
-//		}
-//		fclose(read);
-//		printf("Enter quantity of product: ");
-//		scanf("%s", quantity);
-//		strcpy(line1, cuttingWordFromLine(templine, 0));
-//		strcat(line1, " ");
-//		strcat(line1, cuttingWordFromLine(templine, 1));
-//		strcat(line1, " ");
-//		strcat(line1, cuttingWordFromLine(templine, 2));
-//		strcat(line1, " ");
-//		strcat(line1, cuttingWordFromLine(templine, 3));
-//		strcat(line1, " ");
-//		strcat(line1, quantity);
-//		strcat(line1, "\0");
-//		FILE* shoppingCart;
-//		if (access("ShoppingCart.txt", F_OK) != -1)
-//		{
-//			//check if the product is exist in file of client.
-//			shoppingCart = fopen("ShoppingCart.txt", "a");
-//			fprintf(shoppingCart, "%s\n", line1);
-//			fclose(shoppingCart);
-//		}
-//		else
-//		{
-//			shoppingCart = fopen("ShoppingCart.txt", "w");
-//			fprintf(shoppingCart, "%s\n", line1);
-//			fclose(shoppingCart);
-//		}
-//	}
-//	else
-//		printf("Sorry, the product '%s' doesn't exist on the store.\n", productToAdd);
-//	return line1;
-//}
 
 int countLines(void)
 {
@@ -1873,7 +1823,7 @@ char checkDetails(char* username, char* password)
 	return '0';
 }
 
-int checkUserExist(char* username)
+int checkUserNotExist(char* username)
 {
 	FILE* file;
 	int ok = 1;
@@ -1903,7 +1853,7 @@ char Login(char* USER)
 		printf("Password: ");
 		gets(password);
 		MorC = checkDetails(username, password);
-		if (MorC != 'F')
+		if (MorC != '0')
 			x = 1;
 		else
 		{
@@ -1913,8 +1863,70 @@ char Login(char* USER)
 		}
 	}
 	if (x)
+	{
 		strcpy(USER, username);
+		printf("Successfully logged in!\n");
+		delay(2);
+	}
 	return MorC;
+}
+
+int menu() {
+	int choose = 0, option = 0, check = 0;
+	char a[256] = "\0";
+	do {
+		printf("Choose number cart\n");
+		scanf("%d", &choose);
+		sprintf(a, "%d", choose);
+		strcat(a, ".txt");
+		FILE* open;
+		open = fopen(a, "r");
+		if (open == NULL)
+			check = 0;
+		else
+			check = 1;
+		if (!check) {
+			printf("enter your option\n 1- accept\n 2- decline\n ");
+			scanf("%d", &option);
+			switch (option)
+			{
+			case 1:
+				remove(open);
+				break;
+
+			case 2:
+				remove(open);
+				break;
+			default:
+				break;
+			}
+		}
+	} while (check != 1);
+}
+
+
+
+void PrintAllCarts(int* serial)
+{
+	char temp[256] = "\0";
+	char text[256] = "\0";
+	FILE* read;
+	for (int i = 1; i <= *serial; i++)
+	{
+		sprintf(temp, "%d", i);
+		strcat(temp, ".txt");
+		read = fopen(temp, "r");
+		if (read == NULL)
+			continue;
+		printf("Shopping cart number: %d\n", i);
+		while (!feof(read))
+		{
+			fgets(text, 256, read);
+			puts(text);
+		}
+		fclose(read);
+
+	}
 }
 
 void main()
@@ -1925,14 +1937,15 @@ void main()
 	int* Number_Of_Products = &numberofproducts;
 	int carts = 0;
 	int* Number_Of_Total_Carts = &carts;
-	int serial = 0;
+	int serial = 16;
 	int* UpdatedSerial = &serial;
 	char** shoppingcart = NULL;
 	int run = 1;
 	char MorC = ' ';
 	int choose = 0;
 	int morc = 0;
-	char username[MAXSTRING] = "TTTTTT";
+	char username[MAXSTRING] = "";
+
 	while (run)
 	{
 		choose = PrintWelcome();
@@ -1945,16 +1958,14 @@ void main()
 			MorC = Registration(username);
 			break;
 		case EXIT:
-			printf("Thank you for visiting us!\n Have a great day!\n");
+			printf("Thank you for visiting us!\nHave a great day!\n");
 			run = 0;
 			break;
 		default:
 			break;
 		}
 		if (run == 0)
-		{
 			break;
-		}
 
 		int run2 = 1;
 		// Manager Menu
@@ -1962,17 +1973,18 @@ void main()
 		{
 			while (run2)
 			{
-				choose = PrintManagerMenu();
+				choose = PrintManagerMenu(username);
 				switch (choose)
 				{
 				case CATALOG:
 					catergories = printcategory();
 					strcpy(Categ, getCategory(catergories));
 					printspec(Categ);
-					printinstructions(Categ);
+					printinstructions(Categ,UpdatedSerial);
 					break;
 				case ORDERS:
-
+					PrintAllCarts(UpdatedSerial);
+					menu();
 					break;
 				case PRINTALL:
 					printAllProduct();
@@ -1993,7 +2005,7 @@ void main()
 		{
 			while (run2)
 			{
-				choose = PrintClientMenu();
+				choose = PrintClientMenu(username);
 				switch (choose)
 				{
 				case CATALOG:
@@ -2005,6 +2017,7 @@ void main()
 					break;
 
 				case PRINTALL:
+					printAllProduct();
 					break;
 
 				case DISCONNECTC:

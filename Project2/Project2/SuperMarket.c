@@ -1209,26 +1209,27 @@ int editproduct(char* product)//עריכת מוצר
 		int ch1 = 0;
 		while (!feof(pl))
 		{
-			ch1++;
 			fgets(line, 150, pl);
 			if (strcmp(product, returnword(line, 2)) != 0)
 			{
 				strcpy(newpro[i], line);
 				i++;
 			}
-			if (strcmp(product, returnword(line, 2)) == 0)
+			else
 			{
 				strcpy(templine, line);
 				ch = ch1;
 			}
+			ch1++;
+			if (i == lines - 1)
+				break;
 		}
 		fclose(pl);
 		i = 0;
 		pl = fopen("categories.txt", "w");
-		for (int i = 0; i < lines ; i++)
+		for (int i = 0; i < lines - 1; i++)
 		{
-			if (i + 1 != ch)
-				fputs(newpro[i], pl);
+			fputs(newpro[i], pl);
 		}
 		fclose(pl);
 		for (int i = 0; i < lines; i++)
@@ -1253,7 +1254,7 @@ int editproduct(char* product)//עריכת מוצר
 			strcat(line2, returnword(templine, 3));
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 4));
-            strcat(line2, "\0");
+			strcat(line2, "\0");
 			pl = fopen("categories.txt", "a");
 			fputs(line2, pl);
 			fclose(pl);
@@ -1418,7 +1419,7 @@ void printspec(char* category1)//הדפסה של המוצרים מאותה קטגוריה
 	fclose(category);
 }
 
-void printinstructions(char* category,int* serial)//הוראות
+void printinstructions(char* category, int* serial)//הוראות
 {
 	char product[MAXSTRING] = "\0";
 	int choose = 0;
@@ -1439,7 +1440,7 @@ void printinstructions(char* category,int* serial)//הוראות
 		switch (choose)
 		{
 		case ADD:
-			addProduct(category,serial);
+			addProduct(category, serial);
 			break;
 		case UPDATE:
 			printf("Please choose a product (by it's name): ");
@@ -1873,35 +1874,52 @@ char Login(char* USER)
 }
 
 int menu() {
+	int count = 0;
 	int choose = 0, option = 0, check = 0;
 	char a[256] = "\0";
 	do {
-		printf("Choose number cart\n");
+		if (count == 5)
+		{
+			printf("Too many try, returning to the previuos menu....\n\n");
+			break;
+		}
+		printf("Choose cart number \n");
 		scanf("%d", &choose);
 		sprintf(a, "%d", choose);
 		strcat(a, ".txt");
 		FILE* open;
 		open = fopen(a, "r");
 		if (open == NULL)
+		{
 			check = 0;
+			count++;
+		}
+			
 		else
+		{
 			check = 1;
-		if (!check) {
+			fclose(open);
+		}
+		
+		if (check == 1) {
 			printf("enter your option\n 1- accept\n 2- decline\n ");
 			scanf("%d", &option);
 			switch (option)
 			{
 			case 1:
-				remove(open);
+				remove(a);
 				break;
 
 			case 2:
-				remove(open);
+				remove(a);
 				break;
 			default:
+				printf("Wrong choice. Try again!\n");
 				break;
 			}
 		}
+		else
+			printf("This shooping cart does not exist. Please try again\n");
 	} while (check != 1);
 }
 
@@ -1911,6 +1929,7 @@ void PrintAllCarts(int* serial)
 {
 	char temp[256] = "\0";
 	char text[256] = "\0";
+	char temp1[256] = "\0";
 	FILE* read;
 	for (int i = 1; i <= *serial; i++)
 	{
@@ -1923,7 +1942,9 @@ void PrintAllCarts(int* serial)
 		while (!feof(read))
 		{
 			fgets(text, 256, read);
-			puts(text);
+			if (strcmp(temp1, text) != 0)
+				puts(text);
+			strcpy(temp1, text);
 		}
 		fclose(read);
 
@@ -1981,7 +2002,7 @@ void main()
 					catergories = printcategory();
 					strcpy(Categ, getCategory(catergories));
 					printspec(Categ);
-					printinstructions(Categ,UpdatedSerial);
+					printinstructions(Categ, UpdatedSerial);
 					break;
 				case ORDERS:
 					PrintAllCarts(UpdatedSerial);

@@ -1,18 +1,14 @@
 Vegetable 4 Tomato 6 6000
 Vegetable 5 Cucumber 5 8000
-Vegetable 6 Carrot 7 4000
-Bakery 7 Bread 9 15000
 Bakery 8 Croissant 3 2650
 Bakery 9 Tortillas 2 3000
 Dairy 10 Milk 7 5000
 Dairy 11 Yogurt 9 4000
-Dairy 12 Milky 4 6000
 Meat 13 Hamburger 50 3500
 Fish 16 Lavrak 33 10555
 Meat 15 W 15 100
-Fruit 3 Grape 7 9900
 Meat 14 Sausage 40 7000
-Meat 15 Kaki 10 1000
-Bakery 15 Zibi 15 230
-ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍýýýýÝÝÝÝÝÝw5ð£[D
-Fruit 1 Apple 5 4998
+Fruit 3 Grape 7 8900
+Fish 1 Buri 40 12000
+Fruit 2 Apple 5 4998
+Vegetable 6 Carrot2 8 4000

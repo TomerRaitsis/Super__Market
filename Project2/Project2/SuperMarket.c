@@ -1078,7 +1078,7 @@ int checkproduct(char* product)//בדיקת מוצר אם הוא קיים בקובץ
 	return 0;
 }
 
-char* GetProductBySerial(char* serial)//בדיקת מוצר אם הוא קיים בקובץ
+char* GetProductBySerial(char* serial)
 {
 	int count = 0, i = 0, j, count2 = 0;
 	FILE* productlist;
@@ -1125,7 +1125,7 @@ char* GetProductBySerial(char* serial)//בדיקת מוצר אם הוא קיים בקובץ
 	return Word;
 }
 
-char* QuantityByProductName(char* product)//בדיקת מוצר אם הוא קיים בקובץ
+char* QuantityByProductName(char* product)
 {
 	int count = 0, i = 0, j, count2 = 0;
 	FILE* productlist;
@@ -1503,7 +1503,7 @@ char* getCategory(char** catergories)
 }
 
 
-void printShoppingMenu(void)
+void printShoppingMenu(void)//printing the shopping menu for client.
 {
 	printf("1. In order to display all products.\n");
 	printf("2. In order to display all products by categories.\n");
@@ -1512,14 +1512,15 @@ void printShoppingMenu(void)
 	printf("5. Return to the Main Menu.\n");
 	printf("Please enter your option: ");
 }
-void printAllProduct(void) {
+void printAllProduct(void)//printing all products of the shopping store.
+{
 	FILE* read = fopen("categories.txt", "r");
 	char singleline[MAXSTRING];
 	char Check[MAXSTRING] = " ";
-	while (!feof(read))
+	while (!feof(read))//reads the file till the end
 	{
 		fgets(singleline, MAXSTRING, read);
-		if (strcmp(Check, singleline) != 0)
+		if (strcmp(Check, singleline) != 0)//if its not a empty line
 			puts(singleline);
 		strcpy(Check, singleline);
 	}
@@ -1528,19 +1529,18 @@ void printAllProduct(void) {
 
 char* cuttingWordFromLine(char* lines, int n)
 {
-	//char word[10];
 	char* word = malloc(10 * sizeof(char*));
 	int count = 0, i = 0, j = 0;
 	while (count != n)//n - num of space, depend where we want to stop in line.
 	{
-		if (lines[i] == ' ')
+		if (lines[i] == ' ')//count the space to find the correct index.
 		{
 			count++;
 		}
 		i++;
 	}
 	j = 0;
-	while (lines[i] != ' ')
+	while (lines[i] != ' ')//copy the word of lines until the space then exit the loop.
 	{
 		word[j] = lines[i];
 		i++;
@@ -1549,50 +1549,48 @@ char* cuttingWordFromLine(char* lines, int n)
 	word[j] = '\0';
 	return word;
 }
-void printspec1(char* category)//הדפסה של המוצרים מאותה קטגוריה
+void printspec1(char* category)//to print a specific category.
 {
-	FILE* file;
-	file = fopen("categories.txt", "r");
+    FILE* file = fopen("categories.txt", "r");
 	char line[150];
-	while (!feof(file))
+	while (!feof(file))//reads the file till the end.
 	{
 		fgets(line, 150, file);
-		if (strcmp(category, cuttingWordFromLine(line, 0)) == 0)
+		if (strcmp(category, cuttingWordFromLine(line, 0)) == 0)//compare each line if the category was found on file.
 		{
 			printf("%s", line);
 		}
 	}
 	printf("\n");
 }
-int checkIfItemIsExist(const char* word)
+int checkIfItemIsExist(const char* word)//checking if the name of the product is exist on file.
 {
 	FILE* file = fopen("categories.txt", "r");
 	char line[100] = "";
-
 	while (fgets(line, 100, file))
-		if (strcmp(cuttingWordFromLine(line, 2), word) == 0)
-			return 1;
+		if (strcmp(cuttingWordFromLine(line, 2), word) == 0)//compare each line if the name was found on file.
+			return 1;//return true.
 	fclose(file);
-	return 0;
+	return 0;//return false.
 }
 
-int countLines(void)
+int countLines(void)//count the lines of the all file.
 {
 	int count = 0;
 	char line[150];
 	FILE* productList;
 	productList = fopen("categories.txt", "r");
-	while (!feof(productList))
+	while (!feof(productList))//reads the file till the end.
 	{
 		fgets(line, 150, productList);
-		if (strcmp(line, "\n") != 0)
+		if (strcmp(line, "\n") != 0)//if it's the end of the line increase the 'count' by 1.
 			count++;
 	}
 	fclose(productList);
 	return count;
 }
 
-void filterItemsByPrices(void)
+void filterItemsByPrices(void)//filter all the product in the shopping store by price.
 {
 	int countItems = countLines(), i = 0, num = 10;
 	FILE* read = fopen("categories.txt", "r");
@@ -1620,13 +1618,13 @@ void filterItemsByPrices(void)
 	{
 		for (int j = 0; j < countItems - 1 - i; j++)
 		{
-			if ((strcmp(arrPrice[j], arrPrice[j + 1]) > 0))
+			if ((strcmp(arrPrice[j], arrPrice[j + 1]) > 0))//swap if the the string of the current element is bigger than the next element according to the alphabet.
 			{
 				strcpy(temp, arrPrice[j]);
 				strcpy(arrPrice[j], arrPrice[j + 1]);
 				strcpy(arrPrice[j + 1], temp);
 			}
-			if (strlen(arrPrice[j]) > strlen(arrPrice[j + 1]))
+			if (strlen(arrPrice[j]) > strlen(arrPrice[j + 1]))//swap if the length of the current string is bigger than the next element.
 			{
 				strcpy(temp, arrPrice[j]);
 				strcpy(arrPrice[j], arrPrice[j + 1]);
@@ -1635,7 +1633,7 @@ void filterItemsByPrices(void)
 		}
 	}
 	i = 0;
-	rewind(read);
+	rewind(read);//back to head of file.
 	while (i != countItems - 1)
 	{
 		fgets(singleline, 150, read);

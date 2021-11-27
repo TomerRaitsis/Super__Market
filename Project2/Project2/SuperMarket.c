@@ -875,6 +875,7 @@ void Shopping_Cart(char** List, int* Number_Of_Products, int* Number_Of_Total_Ca
 						j++;
 						k++;
 					}
+					Serial[k] = '\0';
 					if (strcmp(Serial, SerialChoice) != 0)
 						strcpy(ProductDetails, " ");
 					else
@@ -1246,6 +1247,7 @@ int editproduct(char* product)//עריכת מוצר
 		{
 			printf("Please enter a name: ");
 			gets(temp5);
+			strcpy(temp5, ChangeChar(temp5));
 			strcpy(line2, returnword(templine, 0));
 			strcat(line2, " ");
 			strcat(line2, returnword(templine, 1));
@@ -1372,6 +1374,8 @@ void deleteproduct(char* product)//מחיקת מוצר
 		}
 		char line[150], templine[150], temp5[20], line2[150];
 		int i = 0;
+		int ch1 = 0;
+		int ch = 0;
 		while (!feof(pl))
 		{
 			fgets(line, 150, pl);
@@ -1380,17 +1384,22 @@ void deleteproduct(char* product)//מחיקת מוצר
 				strcpy(newpro[i], line);
 				i++;
 			}
-			if (strcmp(product, returnword(line, 2)) == 0)
+			else
 			{
 				strcpy(templine, line);
+				ch = ch1;
 			}
+			ch1++;
+			if (ch == lines)
+				break;
 		}
 		fclose(pl);
 		i = 0;
 		pl = fopen("categories.txt", "w");
 		for (int i = 0; i < lines; i++)
 		{
-			fprintf(pl, newpro[i]);
+			if (i != ch)
+				fputs(newpro[i], pl);
 		}
 		fclose(pl);
 		for (int i = 0; i < lines; i++)
@@ -1587,6 +1596,7 @@ void filterItemsByPrices(void)
 	int countItems = countLines(), i = 0, num = 10;
 	FILE* read = fopen("categories.txt", "r");
 	char singleline[150];
+	char temp1[MAXSTRING] = " ";
 	char** arrPrice = (char**)malloc(countItems * sizeof(char*));
 	for (i = 0; i < countItems; i++)
 	{
@@ -1596,8 +1606,13 @@ void filterItemsByPrices(void)
 	while (!feof(read))
 	{
 		fgets(singleline, 150, read);
-		strcpy(arrPrice[i], cuttingWordFromLine(singleline, 3));
-		i++;
+		if (strcmp(temp1, singleline) != 0)
+		{
+			strcpy(arrPrice[i], cuttingWordFromLine(singleline, 3));
+			i++;
+
+		}
+		strcpy(temp1, singleline);
 	}
 	char temp[10];
 	for (i = 0; i < countItems; i++)
@@ -1620,12 +1635,12 @@ void filterItemsByPrices(void)
 	}
 	i = 0;
 	rewind(read);
-	while (i != countItems)
+	while (i != countItems - 1)
 	{
 		fgets(singleline, 150, read);
 		if (strcmp(arrPrice[i], cuttingWordFromLine(singleline, 3)) == 0)
 		{
-			printf("%s", singleline);
+			printf("%s\n", singleline);
 			i++;
 		}
 		if (feof(read)) {
@@ -1689,12 +1704,14 @@ char** ClientShop(char** List, int* Current_Size_list)
 				i++;
 			}
 			j = 0;
+			strcpy(temp, "-1");
 			while (Product_Details[i] != ' ')
 			{
 				temp[j] = Product_Details[i];
 				i++;
 				j++;
 			}
+			temp[j] = '\0';
 			char NewQuantity[MAXSTRING] = " ";
 			sprintf(NewQuantity, "%d", (atoi(QuantityByProductName(temp)) - atoi(Quantity)));
 
@@ -1709,6 +1726,8 @@ char** ClientShop(char** List, int* Current_Size_list)
 			}
 			char line[150], templine[150], temp5[20], line2[150];
 			i = 0;
+			int ch = 0;
+			int ch1 = 0;
 			while (!feof(pl))
 			{
 				fgets(line, 150, pl);
@@ -1717,17 +1736,22 @@ char** ClientShop(char** List, int* Current_Size_list)
 					strcpy(newpro[i], line);
 					i++;
 				}
-				if (strcmp(temp, returnword(line, 2)) == 0)
+				else
 				{
 					strcpy(templine, line);
+					ch = ch1;
+					i++;
 				}
+				ch1++;
+				if (ch1 == lines)
+					break;
 			}
 			fclose(pl);
-			i = 0;
 			pl = fopen("categories.txt", "w");
-			for (int i = 0; i < lines; i++)
+			for (int i = 0; i < lines ; i++)
 			{
-				fprintf(pl, newpro[i]);
+				if (i != ch)
+					fputs(newpro[i], pl);
 			}
 			fclose(pl);
 			for (int i = 0; i < lines; i++)
@@ -1744,10 +1768,12 @@ char** ClientShop(char** List, int* Current_Size_list)
 			strcat(line2, returnword(templine, 3));
 			strcat(line2, " ");
 			strcat(line2, NewQuantity);
-			strcat(line2, "\0");
+			strcat(line2, "\n");
 			pl = fopen("categories.txt", "a");
-			fprintf(pl, "%s\n", line2); // \n
+			fputs(line2, pl);
 			fclose(pl);
+			strcpy(Product_Details, "-1");
+			strcpy(temp, "-1");
 			break;
 		case 4:
 			filterItemsByPrices();
@@ -1881,7 +1907,7 @@ int menu() {
 	do {
 		if (count == 5)
 		{
-			printf("Too many try, returning to the previuos menu....\n\n");
+			printf("Too many tries, returning to the previuos menu....\n\n");
 			break;
 		}
 		printf("Choose cart number \n");
@@ -1960,8 +1986,10 @@ void main()
 	int* Number_Of_Products = &numberofproducts;
 	int carts = 0;
 	int* Number_Of_Total_Carts = &carts;
-	int serial = 16;
+	int serial = 0;
 	int* UpdatedSerial = &serial;
+	int ItemSerial = 0;
+	int* itexserial = &ItemSerial;
 	char** shoppingcart = NULL;
 	int run = 1;
 	char MorC = ' ';
@@ -2003,7 +2031,7 @@ void main()
 					catergories = printcategory();
 					strcpy(Categ, getCategory(catergories));
 					printspec(Categ);
-					printinstructions(Categ, UpdatedSerial);
+					printinstructions(Categ, itexserial);
 					break;
 				case ORDERS:
 					PrintAllCarts(UpdatedSerial);

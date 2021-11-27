@@ -1,0 +1,7 @@
+Yossi1
+Yossi Elgazari 319068920 HaOren, 82/1
+2 12
+Other 14 Caculator 150 1
+Fish 12 Buri 35 1
+Fish 11 Lavrak 33 15
+Dairy 7 Milk 7 12

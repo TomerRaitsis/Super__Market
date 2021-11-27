@@ -1,0 +1,7 @@
+Tomer123
+T 123123123 dasd, 12/123
+2 12
+Bakery 5 Bread 9 3
+Dairy 7 Milk 7 2
+Fish 12 Buri 35 2
+Meat 9 Hamburger 50 100

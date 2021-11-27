@@ -987,16 +987,16 @@ void addProduct(char* category, int* serial)//הוספת מוצר לסוף
 {
 	FILE* productlist;
 	char product[MAXSTRING], serialnum[MAXSTRING], newproduct[MAXSTRING], temp[MAXSTRING];
-	/*
+
 	productlist = fopen("categories.txt", "r");
 	while (!feof(productlist))
 	{
 		fgets(product, 150, productlist);
-		strcpy(serialnum, returnword(product, 1));
+		if (atoi(strcpy(product, returnword(product, 1))) > (*serial))
+			(*serial) = atoi(strcpy(product, returnword(product, 1)));
 	}
 	fclose(productlist);
-	int serial = atoi(serialnum);
-	*/
+
 	(*serial)++;
 	sprintf(serialnum, "%d", *serial);
 	strcpy(newproduct, category);
@@ -1030,9 +1030,9 @@ void addProduct(char* category, int* serial)//הוספת מוצר לסוף
 		gets(temp);
 	}
 	strcat(newproduct, temp);
-	//strcat(newproduct, "\n");
+	strcat(newproduct, "\n");
 	productlist = fopen("categories.txt", "a");
-	fprintf(productlist, "%s", newproduct);
+	fputs(newproduct, productlist);
 	fclose(productlist);
 }
 
@@ -1203,7 +1203,7 @@ int editproduct(char* product)//עריכת מוצר
 		{
 			newpro[i] = (char*)malloc(150 * sizeof(char));
 		}
-		char line[150], templine[150], temp5[20], line2[150];
+		char line[150], templine[150] = " ", temp5[20], line2[150];
 		int i = 0;
 		int ch = 0;
 		int ch1 = 0;
@@ -1221,7 +1221,7 @@ int editproduct(char* product)//עריכת מוצר
 				ch = ch1;
 			}
 			ch1++;
-			if (i == lines - 1)
+			if (ch1 == lines)
 				break;
 		}
 		fclose(pl);
@@ -1229,7 +1229,8 @@ int editproduct(char* product)//עריכת מוצר
 		pl = fopen("categories.txt", "w");
 		for (int i = 0; i < lines - 1; i++)
 		{
-			fputs(newpro[i], pl);
+			if (i != ch)
+				fputs(newpro[i], pl);
 		}
 		fclose(pl);
 		for (int i = 0; i < lines; i++)
@@ -1292,7 +1293,7 @@ int editproduct(char* product)//עריכת מוצר
 			strcat(line2, returnword(templine, 3));
 			strcat(line2, " ");
 			strcat(line2, temp5);
-			strcat(line2, "\0");
+			strcat(line2, "\n");
 			pl = fopen("categories.txt", "a");
 			fputs(line2, pl);
 			fclose(pl);
@@ -1313,7 +1314,7 @@ int editproduct(char* product)//עריכת מוצר
 
 const char* returnword(char* line, int n)//מחזיר את השם
 {
-	char temp[20];
+	char temp[20] = " ";
 	int count = 0, i = 0, j, count2 = 0;
 	while (count != n)
 	{
@@ -1891,16 +1892,16 @@ int menu() {
 		open = fopen(a, "r");
 		if (open == NULL)
 		{
-			check = 0; 
+			check = 0;
 			count++;
 		}
-			
+
 		else
 		{
 			check = 1;
 			fclose(open);
 		}
-		
+
 		if (check == 1) {
 			printf("enter your option\n 1- accept\n 2- decline\n ");
 			scanf("%d", &option);

@@ -1,9 +1,8 @@
 Vegetable 5 Cucumber 5 8000
 Bakery 8 Croissant 3 2650
-Dairy 11 Yogurt 9 4000
-Dairy 10 Milk 10 5000
-Fish 16 L2 33 10555
-Meat 14 Tomer1 40 7000
-Vegetable 6 C4 7 4000
-Vegetable 6 C4 7 4000
-Meat 13 Hamburger 50 3000
+Meat 13 Hamburger 50 3500
+Fish 16 L 33 10555
+Vegetable 6 C 7 4000
+Dairy 17 Milk 15 1230
+Dairy 11 A 10 15
+Meat 19 T 15 156

@@ -569,16 +569,16 @@ char* Choosing_Date_For_Delivery(int* AmountofDeliveries)
 
 void Shopping_Cart_Purchase(char** List, int* Current_Size_list, char Shopping_Cart_Serial[], int* AmountofDeliveries, char* User)
 {
-	char Full_Name[31] = "-1";
-	char ID[20] = " ";
-	char Adrress[51] = "-1";
+	char Full_Name[MAXSTRING] = "-1";
+	char ID[MAXSTRING] = " ";
+	char Adrress[MAXSTRING] = "-1";
 	int Approval = -1;
-	char HouseNumber[31] = " ";
-	char AppartmentNumber[31] = " ";
-	char Credit_Card_Number[20] = " ";
-	char Credit_Card_Date_Year[20] = " ";
-	char Credit_Card_Date_Month[20] = "  ";
-	char Credit_Card_CVV[20] = " ";
+	char HouseNumber[MAXSTRING] = " ";
+	char AppartmentNumber[MAXSTRING] = " ";
+	char Credit_Card_Number[MAXSTRING] = " ";
+	char Credit_Card_Date_Year[MAXSTRING] = " ";
+	char Credit_Card_Date_Month[MAXSTRING] = "  ";
+	char Credit_Card_CVV[MAXSTRING] = " ";
 	struct tm* T;
 	time_t t;
 	t = time(NULL);
@@ -908,6 +908,7 @@ void Shopping_Cart(char** List, int* Number_Of_Products, int* Number_Of_Total_Ca
 		case PURCHASE:
 			Shopping_Cart_Purchase(List, Number_Of_Products, Updadated_Serial, Number_Of_Total_Carts, User);
 			strcpy(Choice, "5");
+			Delete_Shopping_Cart(List, Number_Of_Products);
 			break;
 		case GOBACK:
 			printf("Returning to the previous manu\n");
@@ -2031,7 +2032,7 @@ void main()
 					catergories = printcategory();
 					strcpy(Categ, getCategory(catergories));
 					printspec(Categ);
-					printinstructions(Categ, itexserial);
+					printinstructions(Categ, itexserial, shoppingcart, Number_Of_Products);
 					break;
 				case ORDERS:
 					PrintAllCarts(UpdatedSerial);
@@ -2074,6 +2075,8 @@ void main()
 				case DISCONNECTC:
 					printf("Disconncted!\n");
 					run2 = 0;
+					if(*Number_Of_Products > 0)
+						Delete_Shopping_Cart(shoppingcart, Number_Of_Products);
 					break;
 
 				}

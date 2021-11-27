@@ -14,7 +14,7 @@ enum MyEnum { /*Welcome Menu*/ LOGIN = 1, REGISTRATION = 2, EXIT = 3,
 	/*Manager Catalog*/ ADD = 1, UPDATE = 2, DELETE = 3, RETURN = 4
 };
 
-char* ChangeChar(char* s)
+char* ChangeChar(char* s) // Changing " " with "_"
 {
 	int i = 0;
 	while (s[i] != '\0')
@@ -46,7 +46,7 @@ void delay(int number_of_seconds)
 
 }
 
-int ChangePasswordManager()
+int ChangePasswordManager() // Changing the mangager password (Saving it to a File)
 {
 	FILE* fp;
 	char password[MAXSTRING] = "\0";
@@ -61,7 +61,7 @@ int ChangePasswordManager()
 	return 1;
 }
 
-char* GetPasswordManager()
+char* GetPasswordManager() // Getting the mangager password (from a File)
 {
 	char password[MAXSTRING] = "\0";
 	FILE* fp;
@@ -71,7 +71,7 @@ char* GetPasswordManager()
 	return password;
 }
 
-char Registration(char* USER)
+char Registration(char* USER) // User registration
 {
 	printf("Proceeding to registration page...\n");
 	delay(2);
@@ -218,7 +218,7 @@ int CheckPassword(char* password)
 	return small && digit && capital;
 }
 
-int PrintWelcome()
+int PrintWelcome() // First menu
 {
 	int choose = 0;
 	while (choose != 1 && choose != 2 && choose != 3)
@@ -243,7 +243,7 @@ int PrintWelcome()
 	return choose;
 }
 
-int PrintClientMenu(char* username)
+int PrintClientMenu(char* username) // Client menu
 {
 	int choose = 0;
 	printf("Hello %s!\n", username);
@@ -267,7 +267,7 @@ int PrintClientMenu(char* username)
 	return choose;
 }
 
-int PrintManagerMenu(char* username)
+int PrintManagerMenu(char* username) // Mangaer menu
 {
 	int choose = 0;
 	printf("Hello %s!\n", username);
@@ -292,7 +292,7 @@ int PrintManagerMenu(char* username)
 	return choose;
 }
 
-void Print_Shopping_Cart_Menu()
+void Print_Shopping_Cart_Menu() // Shopping cart menu
 {
 	printf("Please choose one of the following options below:\n");
 	printf("1) Edit shopping cart\n");
@@ -301,7 +301,7 @@ void Print_Shopping_Cart_Menu()
 	printf("4) Purchase shopping cart\n");
 }
 
-char** New_Shopping_Cart()
+char** New_Shopping_Cart() // Making an empty shopping cart
 {
 	char** List = (int**)malloc(0);
 	if (List == NULL)
@@ -312,7 +312,7 @@ char** New_Shopping_Cart()
 	return List;
 }
 
-char** Add_New_Item_To_Shopping_Cart(char** List, int* Current_Size_list, char Product_Details[])
+char** Add_New_Item_To_Shopping_Cart(char** List, int* Current_Size_list, char Product_Details[]) // Adding a new item in to the shopping cart
 {
 	char** NewList = (char**)malloc(((*Current_Size_list) + 1) * (sizeof(char[MAXSTRING])));
 	if (NewList == NULL)
@@ -334,7 +334,7 @@ char** Add_New_Item_To_Shopping_Cart(char** List, int* Current_Size_list, char P
 	return NewList;
 }
 
-char** Remove_Item_From_Shopping_Cart(char** List, int* Current_Size_list, char Product_Details[])
+char** Remove_Item_From_Shopping_Cart(char** List, int* Current_Size_list, char Product_Details[]) // Deleting an item from the shopping cart
 {
 	int check;
 	char** NewList = (char**)malloc((*Current_Size_list + 1) * (sizeof(char[MAXSTRING])));
@@ -367,7 +367,7 @@ char** Remove_Item_From_Shopping_Cart(char** List, int* Current_Size_list, char 
 	return NewList;
 }
 
-char** Change_Quantity_Of_A_Product(char** List, int* Current_Size_list, char Product_Details[], char* New_Quantity)
+char** Change_Quantity_Of_A_Product(char** List, int* Current_Size_list, char Product_Details[], char* New_Quantity) // Changhing the quantity of an item in the shopping cart
 {
 	if (atoi(New_Quantity) == 0)
 	{
@@ -415,7 +415,7 @@ char** Change_Quantity_Of_A_Product(char** List, int* Current_Size_list, char Pr
 	return NewList;
 }
 
-void Print_Shopping_Cart_Items(char** List, int* Current_Size_list)
+void Print_Shopping_Cart_Items(char** List, int* Current_Size_list) // Printing the shopping cart
 {
 	int i;
 	for (i = 0; i < *Current_Size_list; i++)
@@ -424,7 +424,7 @@ void Print_Shopping_Cart_Items(char** List, int* Current_Size_list)
 	}
 }
 
-void Delete_Shopping_Cart(char** List, int* Current_Size_list)
+void Delete_Shopping_Cart(char** List, int* Current_Size_list) // Deleting the shopping cart
 {
 	int i;
 	for (i = 0; i < *Current_Size_list; i++)
@@ -438,7 +438,7 @@ void Delete_Shopping_Cart(char** List, int* Current_Size_list)
 void Shopping_Cart_To_File(char** List, int* Current_Size_list, char Full_Name[], char* ID, char Adress[], int* Shopping_Cart_Serial, int Day, int Month, char* User)
 {
 	FILE* open;
-	char newS[MAXSTRING] = "\0";
+	char newS[MAXSTRING] = "\0";///////                   Copying the shopping cart to a file
 	(*Shopping_Cart_Serial)++;
 	sprintf(newS, "%d", (*Shopping_Cart_Serial));
 	strcat(newS, ".txt");
@@ -453,7 +453,7 @@ void Shopping_Cart_To_File(char** List, int* Current_Size_list, char Full_Name[]
 	fclose(open);
 }
 
-int Count_For_Deliveries_At_The_Same_Day(int* Amount_of_Deliveries, int Day_Number, int Month_Number)
+int Count_For_Deliveries_At_The_Same_Day(int* Amount_of_Deliveries, int Day_Number, int Month_Number) // Checking if there more than 15 deliveries for a day
 {
 	FILE* out;
 	char Day[3] = "\0";
@@ -496,14 +496,14 @@ int Count_For_Deliveries_At_The_Same_Day(int* Amount_of_Deliveries, int Day_Numb
 	return count;
 }
 
-int dayofweek(int d, int m, int y)
+int dayofweek(int d, int m, int y) // Calculating a day of the week
 {
 	static int t[] = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
 	y -= m < 3;
 	return (y + y / 4 - y / 100 + y / 400 + t[m - 1] + d) % 7;
 }
 
-char* Choosing_Date_For_Delivery(int* AmountofDeliveries)
+char* Choosing_Date_For_Delivery(int* AmountofDeliveries) // Here the client will choose a day for his delivery
 {
 	int choice = 1;
 	int Agreed = 1;
@@ -571,7 +571,7 @@ void Shopping_Cart_Purchase(char** List, int* Current_Size_list, char Shopping_C
 {
 	char Full_Name[MAXSTRING] = "-1";
 	char ID[MAXSTRING] = " ";
-	char Adrress[MAXSTRING] = "-1";
+	char Adrress[MAXSTRING] = "-1";//                here the client will enter all of his details for the purchase of his shopping cart
 	int Approval = -1;
 	char HouseNumber[MAXSTRING] = " ";
 	char AppartmentNumber[MAXSTRING] = " ";
@@ -839,7 +839,7 @@ void Shopping_Cart_Purchase(char** List, int* Current_Size_list, char Shopping_C
 
 void Shopping_Cart(char** List, int* Number_Of_Products, int* Number_Of_Total_Carts, int* Updadated_Serial, char* User)
 {
-	enum MyEnum { EDIT = 1, ERASE = 2, PRINT = 3, PURCHASE = 4, GOBACK = 5 };
+	enum MyEnum { EDIT = 1, ERASE = 2, PRINT = 3, PURCHASE = 4, GOBACK = 5 }; //    The menu for the shopping cart (includes all the options and functions
 	char Choice[MAXSTRING] = " ";
 	char SerialChoice[MAXSTRING] = " ";
 	char NewQuantity[MAXSTRING] = " ";
@@ -995,12 +995,12 @@ void addProduct(char* category, int* serial)//הוספת מוצר לסוף
 	{
 		fgets(product, 150, productlist);
 		if (atoi(strcpy(product, returnword(product, 1))) > (*serial))
-			(*serial) = atoi(strcpy(product, returnword(product, 1)));
+			(*serial) = atoi(strcpy(product, returnword(product, 1)));  //the function gets a new serial number to the new product
 	}
 	fclose(productlist);
 
 	(*serial)++;
-	sprintf(serialnum, "%d", *serial);
+	sprintf(serialnum, "%d", *serial); //the function addes the serial number from int to string and adds it to the serial num string
 	strcpy(newproduct, category);
 	strcat(newproduct, " ");
 	strcat(newproduct, serialnum);
@@ -1019,7 +1019,7 @@ void addProduct(char* category, int* serial)//הוספת מוצר לסוף
 	gets(temp);
 	while (atoi(temp) == 0 || strlen(temp) < 1)
 	{
-		printf("Wrong, please enter again");
+		printf("Wrong, please enter again"); //function checks if the price is not chars
 		gets(temp);
 	}
 	strcat(newproduct, temp);
@@ -1034,7 +1034,7 @@ void addProduct(char* category, int* serial)//הוספת מוצר לסוף
 	strcat(newproduct, temp);
 	strcat(newproduct, "\n");
 	productlist = fopen("categories.txt", "a");
-	fputs(newproduct, productlist);
+	fputs(newproduct, productlist); //the funcion adds the new product by strcat and strcpy and adds it to the end of the list
 	fclose(productlist);
 }
 
@@ -1058,7 +1058,7 @@ int checkproduct(char* product)//בדיקת מוצר אם הוא קיים בקובץ
 			i++;
 		}
 		j = 0;
-		while (line[i] != ' ')
+		while (line[i] != ' ') //the loop copies the name of the product
 		{
 			temp[j] = line[i];
 			i++;
@@ -1078,7 +1078,7 @@ int checkproduct(char* product)//בדיקת מוצר אם הוא קיים בקובץ
 	return 0;
 }
 
-char* GetProductBySerial(char* serial)
+char* GetProductBySerial(char* serial) //checks if the product exist in the list by the serial num
 {
 	int count = 0, i = 0, j, count2 = 0;
 	FILE* productlist;
@@ -1111,7 +1111,7 @@ char* GetProductBySerial(char* serial)
 			j++;
 		}
 		temp[j] = '\0';
-		if (strcmp(temp, serial) == 0)
+		if (strcmp(temp, serial) == 0) //checks if the serial num equal to temp
 		{
 			strcpy(Word, line);
 			count2++;
@@ -1242,7 +1242,7 @@ int editproduct(char* product)//עריכת מוצר
 		free(newpro);
 		printf("Please select how you want to edit your product \n");
 		printf("1.Name\n2.Price\n3.Quantity\n");
-		scanf("%d", &num1);
+		scanf("%d", &num1); //asks the user to enter name and then copies every thing from the line except the name and the enters to the end of the text file
 		getchar();
 		if (num1 == 1)
 		{
@@ -1348,7 +1348,7 @@ int countlines()//סופר שורות
 	int count = 0;
 	char line[150];
 	FILE* productlist;
-	productlist = fopen("categories.txt", "r");
+	productlist = fopen("categories.txt", "r"); //opens the text file for reading
 	while (!feof(productlist))
 	{
 		fgets(line, 150, productlist);
@@ -1400,7 +1400,7 @@ void deleteproduct(char* product)//מחיקת מוצר
 		for (int i = 0; i < lines; i++)
 		{
 			if (i != ch)
-				fputs(newpro[i], pl);
+				fputs(newpro[i], pl); //writes the products into the file without the product we delted
 		}
 		fclose(pl);
 		for (int i = 0; i < lines; i++)
@@ -1415,7 +1415,7 @@ void deleteproduct(char* product)//מחיקת מוצר
 	}
 }
 
-void printspec(char* category1)//הדפסה של המוצרים מאותה קטגוריה
+void printspec(char* category1)//prints the product from the same category
 {
 	FILE* category;
 	category = fopen("categories.txt", "r");
@@ -1430,7 +1430,7 @@ void printspec(char* category1)//הדפסה של המוצרים מאותה קטגוריה
 	fclose(category);
 }
 
-void printinstructions(char* category, int* serial)//הוראות
+void printinstructions(char* category, int* serial)//print the menu of the manager
 {
 	char product[MAXSTRING] = "\0";
 	int choose = 0;
@@ -1477,7 +1477,7 @@ void printinstructions(char* category, int* serial)//הוראות
 	}
 }
 
-char* getCategory(char** catergories)
+char* getCategory(char** catergories) //returns the catagories
 {
 	int ok = 0;
 	char choose[MAXSTRING] = "\0";
@@ -1652,7 +1652,7 @@ void filterItemsByPrices(void)//filter all the product in the shopping store by 
 	fclose(read);
 }
 
-char** ClientShop(char** List, int* Current_Size_list)
+char** ClientShop(char** List, int* Current_Size_list) // The menu for the client 
 {
 	int i = 0;
 	int j = 0;
